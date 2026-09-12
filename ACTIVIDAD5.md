@@ -66,5 +66,20 @@ z = 10²+10²         z = 6²+10²          z = 1²+7²
 z = 200             z = 136             z = 50
 z = 14.142          z = 11.661          z = 7.071
 ``````
-**Resuelve las siguientes potencias de i.**
+**Resuelve las siguientes potencias de i.**  
+``````
+49) i⁵              50) i¹⁰             51) i²⁰
+i⁵ = i           resto 10/4 = 2      resto 20/4 = 0  
+                    i¹⁰ = -1            i²⁰ = 1
+
+52) i³⁵             53) i²⁵⁶            54) i⁵^⁵
+resto 35/4 = 3    resto 256/4 = 0       i²⁵
+i³⁵ = -i            i²⁵⁶ = 1            resto 25/4 = 1
+                                        i²⁵ = i
+``````
+**Convierte los siguientes números complejos a su forma polar.**
+
+
+
+
 

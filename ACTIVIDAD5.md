@@ -111,8 +111,17 @@ b = 5√3/4                               b = 2√2                             
 
 ``````
 **Obtén TODAS las raíces de los siguientes complejos**  
-**67) 2 raíces cuadradas de 4(cos30° + isen30°)**
-![]()
+**67) 2 raíces cuadradas de 4(cos30° + isen30°)**  
+![]()  
+<p></p>  
+
+**68) 2 raíces cuadradas de 3(cos90° + isen90°)**  
+![]()  
+<p></p>  
+
+**69) 3 raíces cúbicas de -4√2+4i√2**  
+![]()  
+<p></p>  
 
 
 ²

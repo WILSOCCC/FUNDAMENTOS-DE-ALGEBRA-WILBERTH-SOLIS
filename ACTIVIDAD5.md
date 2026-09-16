@@ -110,7 +110,9 @@ b = 2.5sen120°     -1.25 + 5√3/4i       b = 4sen135°     -2√2 + 2√2i    
 b = 5√3/4                               b = 2√2                             b = 0
 
 ``````
-**Obtén TODAS las raices de los siguientes complejos**
+**Obtén TODAS las raíces de los siguientes complejos**  
+**67) 2 raíces cuadradas de 4(cos30° + isen30°)**
+![]()
 
 
 ²

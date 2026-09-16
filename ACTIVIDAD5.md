@@ -124,14 +124,15 @@ b = 5√3/4                               b = 2√2                             
 <p></p>  
 
 **70) 3 raíces cúbicas de -27/8**  
-![]()  
+![](70.png)  
 <p></p>  
 
 **71) 5 raíces de -32i**  
-![]()  
+![](711.png)  
+![](712.png)  
 <p></p>  
 
-**72) 3 raíces cúbicas de -4√2+4i√2**  
+**72) 6 raíces cúbicas de 729**  
 ![]()  
 <p></p>  
 ²

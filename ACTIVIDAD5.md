@@ -94,20 +94,23 @@ r = 3                   θ = 330°                       r = 2                  
 ``````
 **Convierte los números complejos de su forma polar a su forma rectángular**
 ``````
-61) cos30° + isen30°            62) 2(cos60° + isen 60°)        63) 1.5(cos90° + isen90°)
-a = 1cos30°    r = 1            a = 2cos60°      r = 2          a = 1.5cos90°     r = 1.5
-a = √3/2       θ = 30°          a = 1            θ = 60°        a = 0             θ = 90°
+61) cos30° + isen30°                  62) 2(cos60° + isen 60°)              63) 1.5(cos90° + isen90°)
+a = 1cos30°    r = 1                  a = 2cos60°      r = 2                a = 1.5cos90°     r = 1.5
+a = √3/2       θ = 30°                a = 1            θ = 60°              a = 0             θ = 90°
 
-b = 1sen30°    √3/2 + 1/2i      b = 2sen60°      1 + √3i        b = 1.5sen90°     1.5i
-b = 1/2                         b = √3                          b = 1.5
-
-
-64)
+b = 1sen30°    √3/2 + 1/2i            b = 2sen60°      1 + √3i              b = 1.5sen90°     1.5i
+b = 1/2                               b = √3                                b = 1.5
 
 
-²
+64) 2.5(cos120° + isen120°)             65) 4(cos135° + isen135°)           66) 3(cos180° + isin180°)
+a = 2.5cos120°     r = 2.5              a = 4cos135°     r = 5              a = 3cos180°     r = 3
+a = -1.25          θ = 120°             a = -2√2         θ = 135°           a = -3           θ = 180°
+
+b = 2.5sen120°     -1.25 + 5√3/4i       b = 4sen135°     -2√2 + 2√2i        b = 3sen180°     -3
+b = 5√3/4                               b = 2√2                             b = 0
+
 ``````
-
+**Obtén TODAS las raices de los siguientes complejos**
 
 
 ²

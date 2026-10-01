@@ -11,19 +11,32 @@
             margin: 20px auto;
             padding: 10px;
             color: #222;
+            background-image: url("https://img.freepik.com/premium-photo/gray-background-with-white-black-lines-that-say-b_1134661-11461.jpg");
+        }
+        .vacio{
+            border-top: 2px solid #1a5276;
+            padding-top: 0px;
+            background-color: rgba(0, 0, 0, 0, 0);
         }
         h1 {
+            transition: all .4s;
             color: #1a5276;
             cursor: pointer;
-            border-bottom: 2px solid #1a5276;
-            padding-bottom: 5px;
+            padding-bottom: 0px;
         }
         p {
+            transition: all .2s;
             font-size: 16px;
             cursor: pointer;
-            background-color: #f2f2f2;
+            background: rgba(0, 0, 0, 0, 0);
             padding: 10px;
             border-radius: 4px;
+        }
+        .vacio:hover{
+            background-color: rgba(0, 0, 0, 0, 100);
+        }
+        p:hover{
+            background-color: #a3a3a3;
         }
         table {
             width: 100%;
@@ -31,11 +44,13 @@
             margin: 15px 0;
         }
         th, td {
+            transition: all .3s;
             border: 1px solid #ccc;
             padding: 8px;
             cursor: pointer;
         }
         td{
+            background-color: #f6feff;
             height: 50px;
         }
         th {
@@ -44,11 +59,12 @@
             text-align: center;
         }
         ul, ol {
-            background-color: #fafafa;
+            background: rgba(0, 0, 0, 0, 0);
             padding: 15px 30px;
-            border: 1px solid #ddd;
+            border: 5px double #a7a7a7;
         }
         li {
+            transition: all .3s;
             margin: 5px 0;
             cursor: pointer;
             padding: 4px;
@@ -59,14 +75,28 @@
         .resaltado {
             background-color: #d4efdf;
             color: #196f3d;
+            transform: scale(1.3,1.3);
+            margin-left: 80px;
+            margin-right: 47px;
+        }
+        .resaltado-tabla {
+            background-color: #d4efdf;
+            color: #196f3d;
         }
         .cambio-color {
             color: #c0392b;
+            transform: scale(1.2,1.2);
+            margin-left: 60px;
+            border-bottom: none;
+        }
+        td:hover{
+            background-color: #dbf1ff;
         }
     </style>
 </head>
 <body>
     <h1 id="titulo" onclick="cambiarColorTitulo()">Blog Matemático Interactivo</h1>
+    <p class="vacio"></p>
     <p onclick="alternarLista('conceptos')">
         Conceptos Básicos (Haz clic aquí para mostrar u ocultar la lista)
     </p>
@@ -78,26 +108,27 @@
     </ul>
 
     <p>Tabla de Fórmulas (Haz clic en cualquier celda para cambiar su color)</p>
+    
     <table>
         <tr>
             <th>Tema</th>
             <th>Fórmula</th>
         </tr>
         <tr>
-            <td onclick="resaltarElemento(this)">Área del triángulo</td>
-            <td onclick="resaltarElemento(this)">Base por altura dividido entre 2</td>
+            <td onclick="resaltarTabla(this)">Área del triángulo</td>
+            <td onclick="resaltarTabla(this)">Base por altura dividido entre 2</td>
         </tr>
         <tr>
-            <td onclick="resaltarElemento(this)">Teorema de Pitágoras</td>
-            <td onclick="resaltarElemento(this)">a elevado al cuadrado más b elevado al cuadrado igual a c elevado al cuadrado</td>
+            <td onclick="resaltarTabla(this)">Teorema de Pitágoras</td>
+            <td onclick="resaltarTabla(this)">a elevado al cuadrado más b elevado al cuadrado igual a c elevado al cuadrado</td>
         </tr>
         <tr>
-            <td onclick="resaltarElemento(this)">Perímetro del círculo</td>
-            <td onclick="resaltarElemento(this)">2 por Pi por radio</td>
+            <td onclick="resaltarTabla(this)">Perímetro del círculo</td>
+            <td onclick="resaltarTabla(this)">2 por Pi por radio</td>
         </tr>
         <tr>
-            <td onclick="resaltarElemento(this)">Suma de cubos</td>
-            <td onclick="resaltarElemento(this)">a³+ b³ = (a + b)(a² - ab + b²)</td>
+            <td onclick="resaltarTabla(this)">Suma de cubos</td>
+            <td onclick="resaltarTabla(this)">a³+ b³ = (a + b)(a² - ab + b²)</td>
         </tr>
     </table>
 
@@ -115,9 +146,10 @@
         Casos de factorización (Haz clic aquí para mostrar u ocultar los casos)
     </p>
     <ul id="casos">
-        <li onclick="resaltarElemento(this)">Casos</li>
+        <li onclick="resaltarElemento(this)">Factor común: 12x² + 18x = x(12x + 18)</li>
+        <li onclick="resaltarElemento(this)">Trinomio cuadrado perfecto: a² + 2ab + b² = (a + b)(a + b) = (a + b)² <br>a² - 2ab + b² = (a-b)(a+b) = (a-b)²</li>
+        <li onclick="resaltarElemento(this)">Diferencia de cuadrados perfectos: x² - 16 = √x² = x, √16 = 4. x² - 16 = (x - 4)(x + 4)</li>
     </ul>
-    <!-- Paso 2: aquí va el contenido -->
      
     <script>
             function cambiarColorTitulo() {
@@ -130,6 +162,9 @@
             }
             function resaltarElemento(elemento) {
                 elemento.classList.toggle('resaltado');
+            }
+            function resaltarTabla(td){
+                td.classList.toggle('resaltado-tabla')
             }
     </script>
 </body>

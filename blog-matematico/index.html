@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Matemático Interactivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 10px;
+            color: #222;
+            background-image: url("https://img.freepik.com/premium-photo/gray-background-with-white-black-lines-that-say-b_1134661-11461.jpg");
+        }
+        .vacio{
+            border-top: 2px solid #1a5276;
+            padding-top: 0px;
+            background-color: rgba(0, 0, 0, 0, 0);
+        }
+        h1 {
+            transition: all .4s;
+            color: #1a5276;
+            cursor: pointer;
+            padding-bottom: 0px;
+        }
+        p {
+            transition: all .2s;
+            font-size: 16px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0, 0);
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .vacio:hover{
+            background-color: rgba(0, 0, 0, 0, 100);
+        }
+        p:hover{
+            background-color: #a3a3a3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            transition: all .3s;
+            border: 1px solid #ccc;
+            padding: 8px;
+            cursor: pointer;
+        }
+        td{
+            background-color: #f6feff;
+            height: 70px;
+            min-height: 0px;
+        }
+        th {
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+        }
+        .re{
+            min-width: 100px;
+            width: 540px;
+        }
+        ul, ol {
+            background: rgba(0, 0, 0, 0, 0);
+            padding: 15px 30px;
+            border: 5px double #a7a7a7;
+        }
+        li {
+            transition: all .3s;
+            margin: 5px 0;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .oculto {
+            display: none;
+        }
+        .resaltado {
+            background-color: #d4efdf;
+            color: #196f3d;
+            transform: scale(1.3,1.3);
+            margin-left: 100px;
+            margin-right: 69px;
+        }
+        .resaltado-tabla {
+            background-color: #d4efdf;
+            color: #196f3d;
+        }
+        .cambio-color {
+            color: #c0392b;
+            transform: scale(1.2, 1.2);
+            margin-left: 60px;
+            border-bottom: none;
+        }
+        td:hover{
+            background-color: #dbf1ff;
+        }
+        .exp:hover{
+            white-space: nowrap;
+            transform: scale3d(1.2, 1.2, 6.0);
+        }
+        .exp{
+            perspective: 10px;
+            transition: transform 0.5s ease;
+        }
+        .ejemplos{
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+        .contenido{
+            max-height: 0px;
+            padding: 0;
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+        }
+        .ejemplos td{
+            border: none;
+            opacity: 0;
+            visibility: hidden;
+            height: 0px;
+            padding: 0px;
+        }
+        .ejemplos.oculto2 .contenido{
+            max-height: 70px;
+        }
+        .ejemplos.oculto2 td{
+            border: 1px solid #ccc;
+            opacity: 1;
+            visibility: visible;
+            height: 70px;
+            padding: 8px;
+        }
+        /* Clases auxiliares para elementos interactivos */
+        ul.interactivo {
+            background-color: #fafafa;
+            padding: 15px 30px;
+            border: 1px solid #ddd;
+        }
+        ul.interactivo li {
+            margin: 5px 0;
+            cursor: pointer;
+            padding: 4px;
+        }
+        /* Lista de entradas cargadas dinámicamente */
+        #lista-entradas {
+            list-style-type: none;
+            padding: 0;
+        }
+        #lista-entradas li {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #lista-entradas li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #f1f1f1;
+        }
+        #lista-entradas a {
+            color: #1a527f;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #lista-entradas a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        .fecha-post {
+            display: inline-block;
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-left: 8px;
+        }
+        .resumen-post {
+            margin: 8px 0 0 0;
+            background-color: transparent;
+            padding: 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .liss{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo" onclick="cambiarColorTitulo()">Blog Matemático Interactivo</h1>
+    <p class="vacio"></p>
+    <h2 class="subtitulo">Entradas del Blog</h2>
+    
+    <!-- Aquí JavaScript inyectará las entradas desde posts.js -->
+    <ul id="lista-entradas" class="liss"></ul>
+
+    <p onclick="alternarLista('conceptos')">
+        Conceptos Básicos (Haz clic aquí para mostrar u ocultar la lista)
+    </p>
+    <ul id="conceptos">
+        <li onclick="resaltarElemento(this)">Álgebra: Manipulación de símbolos y ecuaciones.</li>
+        <li onclick="resaltarElemento(this)">Geometría: Estudio de las propiedades de figuras y espacios.</li>
+        <li onclick="resaltarElemento(this)">Cálculo: Análisis del cambio y del movimiento.</li>
+        <li onclick="resaltarElemento(this)">Estadística: Análisis y tratamiento de datos.</li>
+    </ul>
+
+    <p>Tabla de Fórmulas (Haz clic en cualquier celda para cambiar su color)</p>
+    
+    <table>
+        <tr>
+            <th>Tema</th>
+            <th>Fórmula</th>
+        </tr>
+        <tr>
+            <td onclick="resaltarTabla(this)">Área del triángulo</td>
+            <td onclick="resaltarTabla(this)">Base por altura dividido entre 2</td>
+        </tr>
+        <tr>
+            <td onclick="resaltarTabla(this)">Teorema de Pitágoras</td>
+            <td onclick="resaltarTabla(this)">a elevado al cuadrado más b elevado al cuadrado igual a c elevado al cuadrado</td>
+        </tr>
+        <tr>
+            <td onclick="resaltarTabla(this)">Perímetro del círculo</td>
+            <td onclick="resaltarTabla(this)">2 por Pi por radio</td>
+        </tr>
+        <tr>
+            <td onclick="resaltarTabla(this)">Suma de cubos</td>
+            <td onclick="resaltarTabla(this)">a³+ b³ = (a + b)(a² - ab + b²)</td>
+        </tr>
+    </table>
+
+    <p onclick="alternarLista('pasos')">
+        Pasos para resolver un problema (Haz clic aquí para mostrar u ocultar los pasos)
+    </p>
+    <ol id="pasos">
+        <li onclick="resaltarElemento(this)">Comprender el problema planteado.</li>
+        <li onclick="resaltarElemento(this)">Trazar un plan o seleccionar la fórmula.</li>
+        <li onclick="resaltarElemento(this)">Ejecutar las operaciones requeridas.</li>
+        <li onclick="resaltarElemento(this)">Revisar y verificar la solución.</li>
+    </ol>
+
+    <p onclick="alternarLista('casos')">
+        Casos de factorización (Haz clic aquí para mostrar u ocultar los casos)
+    </p>
+    <ul id="casos">
+        <li onclick="resaltarElemento(this)">Factor común: 12x² + 18x = x(12x + 18)</li>
+        <li onclick="resaltarElemento(this)">Trinomio cuadrado perfecto: a² + 2ab + b² = (a + b)(a + b) = (a + b)² <br>a² - 2ab + b² = (a-b)(a+b) = (a-b)²</li>
+        <li onclick="resaltarElemento(this)">Diferencia de cuadrados perfectos: x² - 16 = √x² = x, √16 = 4. x² - 16 = (x - 4)(x + 4)</li>
+    </ul>
+
+    <p>
+        Productos notables (Haz clic aquí para mostrar u ocultar los productos)
+    </p>
+    <table>
+        <tr>
+            <th>Producto notable</th>
+            <th class="re">Regla</th>
+            <th>Expresión algebraica</th>
+        </tr>
+        <tr>
+            <td onclick="ejemplos('bincuadra')">Binomio al cuadrado</td>
+            <td>Se tienen dos términos algebraicos en un binomio, la regla dice que para resolverlo se eleva al cuadrado el primer término, luego su suma o se resta el doble de el primer término por el
+                segundo término, dependiendo del signo que separa los dos términos algebraicos será el signo del término de en medio del resultado, finalmente se suma el segundo término también elevado al cuadrado
+            </td>
+            <td class="exp">(a ± b)² = a² ± 2ab + b²</td>
+        </tr>
+        <tr id="bincuadra" class="ejemplos">
+            <td colspan="3"><div class="contenido">sss</div></td>
+        </tr>
+
+        <tr>
+            <td onclick="ejemplos('bincubo')">Binomio al cubo</td>
+            <td>
+
+            </td>
+            <td class="exp">(a ± b)³ = a³ ± 3a²b + 3ab² ± b³</td>
+        </tr>
+        <tr id="bincubo" class="ejemplos">
+            <td colspan="3"><div class="contenido">sss</div></td>
+        </tr>
+
+        <tr>
+            <td onclick="ejemplos('comun')">Término común</td>
+            <td>
+                
+            </td>
+            <td class="exp">(x + a)(x + b) = x² + (a + b)x + ab</td>
+        </tr>
+        <tr id="comun" class="ejemplos">
+            <td colspan="3"><div class="contenido">sss</div></td>
+        </tr>
+
+        <tr>
+            <td onclick="ejemplos('conjugados')">conjugados</td>
+            <td>
+
+            </td>
+            <td class="exp">(a + b)(a - b) = a² - b²</td>
+        </tr>
+        <tr id="conjugados" class="ejemplos">
+            <td colspan="3"><div class="contenido">sss</div></td>
+        </tr>
+    </table>
+
+    <!-- Archivo de configuración que contiene el arreglo de entradas -->
+    <script src="posts.js"></script>
+
+    <script>
+            function cambiarColorTitulo() {
+                var titulo = document.getElementById('titulo');
+                titulo.classList.toggle('cambio-color');
+            }
+            function alternarLista(id) {
+                var lista = document.getElementById(id);
+                lista.classList.toggle('oculto');
+            }
+            function resaltarElemento(elemento) {
+                elemento.classList.toggle('resaltado');
+            }
+            function resaltarTabla(td){
+                td.classList.toggle('resaltado-tabla')
+            }
+            function ejemplos(id){
+                var fila = document.getElementById(id);
+                fila.classList.toggle("oculto2");
+                console.log("Se activó correctamente");
+            }
+            
+            // Cargar dinámicamente las entradas definidas en posts.js
+        const contenedorLista = document.getElementById('lista-entradas');
+
+        if (typeof publicaciones !== 'undefined' && publicaciones.length > 0) {
+            publicaciones.forEach(post => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <a href="entrada.html?id=${post.id}">${post.titulo}</a>
+                    <span class="fecha-post">${post.fecha}</span>
+                    <p class="resumen-post">${post.resumen}</p>
+                `;
+                contenedorLista.appendChild(li);
+            });
+        } else {
+            contenedorLista.innerHTML = '<li>No hay entradas publicadas aún.</li>';
+        }
+
+        // Funciones de interacción rápida
+        function cambiarColorTitulo() {
+            var titulo = document.getElementById('titulo');
+            titulo.classList.toggle('cambio-color');
+        }
+
+        function alternarLista(id) {
+            var lista = document.getElementById(id);
+            lista.classList.toggle('oculto');
+        }
+
+        function resaltarElemento(elemento) {
+            elemento.classList.toggle('resaltado');
+        }
+    </script>
+    
+
+    <script>
+        
+    </script>
+</body>
+</html>

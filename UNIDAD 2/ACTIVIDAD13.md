@@ -4,7 +4,7 @@
 
 **Resuelve los siguientes binomios**  
 
-```````
+```````text
 
 1) (r - 5)²         2) (7 + 3r)²        3) (4v + 5)²
 r² - 10r + 25       49 + 42r + 9r²      16v² + 40v + 25

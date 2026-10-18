@@ -35,7 +35,7 @@ contenidoEntrada = `
     <p>Se unen los resultados: <strong>4x² - 16x + 16</strong> taraan!</p>
 
     <h4>Comprobación con el método de la tabla</h4>
-    <div class="imagenes"><img src="/blog-matematico/multimedia/binocua.png"></div>
+    <div class="imagenes"><img src="multimedia/binocua.png"></div>
 
     <h3 id="bincubo">Binomio al cubo</h3>
     <p>Es un binomio que está elevado a la potencia 3, todo su interior se eleva al
@@ -66,7 +66,7 @@ contenidoEntrada = `
     <p>Se unen los resultados: <strong>216x³ + 432x²y² + 288xy⁴ + 64y⁶</strong> taraan!</p>
 
     <h4>Comprobación con el método de multiplicación cruzado</h4>
-    <div class="imagenes"><img src="/blog-matematico/multimedia/binocubo.png"></div>
+    <div class="imagenes"><img src="multimedia/binocubo.png"></div>
 
     <h3 id="conjugado">Conjugados</h3>
     <p>Es el producto de un binomio por el mismo binomio con el signo inverso.
@@ -85,7 +85,7 @@ contenidoEntrada = `
     <p>Se unen los resultados: <strong25x² - 4</strong></p>
 
     <h4>Comprobación con el método de la tabla</h4>
-    <div class="imagenes"><img src="/blog-matematico/multimedia/conju.png"></div>
+    <div class="imagenes"><img src="multimedia/conju.png"></div>
 
     <h3 id="comun">Término común</h3>
     <p>Es el producto de dos binomios los cuales uno de sus términos son iguales,
@@ -108,7 +108,7 @@ contenidoEntrada = `
     <p>Finalmente, se multiplican los términos diferentes: (6)(2) = <strong>12</strong></p>
     <p>Se unen los resultados: <strong>4x² + 16x + 12</strong></p>
     <h4>Comprobación con el método de la tabla</h4>
-    <div class="imagenes"><img src="/blog-matematico/multimedia/comun.png"></div>
+    <div class="imagenes"><img src="multimedia/comun.png"></div>
 
     <h3>Tabla de las fórmulas</h3>
     <table>

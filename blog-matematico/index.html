@@ -67,16 +67,36 @@
             background: rgba(0, 0, 0, 0, 0);
             padding: 15px 30px;
             border: 5px double #a7a7a7;
+            opacity: 1;
+            visibility: visible;
+            height: 100%;
+            transition: all 0.7s ease;
         }
         li {
-            transition: all .3s;
             margin: 5px 0;
             cursor: pointer;
             padding: 4px;
+            height: 100%;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
         }
-        .oculto {
-            display: none;
+        /* Clases para ocultar las listas */
+        .ocultolis li{
+            border: none;
+            opacity: 0;
+            visibility: hidden;
+            padding: 0px;
+            height: 0%;
+            margin: 0px;
+            font-size: 0px;
         }
+        .ocultolis{
+            border: 1px solid #a7a7a7;
+            margin: 0px;
+            padding: 0px;
+        }
+        /* Resaltado del texto dentro de las listas */
         .resaltado {
             background-color: #d4efdf;
             color: #196f3d;
@@ -84,10 +104,12 @@
             margin-left: 100px;
             margin-right: 69px;
         }
+        /* Cambio de color de las celdas de la tabla con click */
         .resaltado-tabla {
             background-color: #d4efdf;
             color: #196f3d;
         }
+        /* Únicamente usado en el título */
         .cambio-color {
             color: #c0392b;
             transform: scale(1.2, 1.2);
@@ -105,6 +127,7 @@
             perspective: 10px;
             transition: transform 0.5s ease;
         }
+        /* Tabla con fila oculta para desplegar */
         .ejemplos{
             transition: opacity 0.4s ease, visibility 0.4s;
         }
@@ -112,7 +135,6 @@
             max-height: 0px;
             padding: 0;
             transition: max-height 0.3s ease;
-            overflow: hidden;
         }
         .ejemplos td{
             border: none;
@@ -121,6 +143,7 @@
             height: 0px;
             padding: 0px;
         }
+        /* Mostrar la fila oculta de la tabla */
         .ejemplos.oculto2 .contenido{
             max-height: 70px;
         }
@@ -131,17 +154,8 @@
             height: 70px;
             padding: 8px;
         }
-        /* Clases auxiliares para elementos interactivos */
-        ul.interactivo {
-            background-color: #fafafa;
-            padding: 15px 30px;
-            border: 1px solid #ddd;
-        }
-        ul.interactivo li {
-            margin: 5px 0;
-            cursor: pointer;
-            padding: 4px;
-        }
+
+        /* NO TOCAR */
         /* Lista de entradas cargadas dinámicamente */
         #lista-entradas {
             list-style-type: none;
@@ -186,6 +200,7 @@
         .liss{
             border: none;
         }
+        /* NO TOCAR */
     </style>
 </head>
 <body>
@@ -196,7 +211,7 @@
     <!-- Aquí JavaScript inyectará las entradas desde posts.js -->
     <ul id="lista-entradas" class="liss"></ul>
 
-    <p onclick="alternarLista('conceptos')">
+    <p onclick="ocultarLista('conceptos')">
         Conceptos Básicos (Haz clic aquí para mostrar u ocultar la lista)
     </p>
     <ul id="conceptos">
@@ -231,7 +246,7 @@
         </tr>
     </table>
 
-    <p onclick="alternarLista('pasos')">
+    <p onclick="ocultarLista('pasos')">
         Pasos para resolver un problema (Haz clic aquí para mostrar u ocultar los pasos)
     </p>
     <ol id="pasos">
@@ -241,7 +256,7 @@
         <li onclick="resaltarElemento(this)">Revisar y verificar la solución.</li>
     </ol>
 
-    <p onclick="alternarLista('casos')">
+    <p onclick="ocultarLista('casos')">
         Casos de factorización (Haz clic aquí para mostrar u ocultar los casos)
     </p>
     <ul id="casos">
@@ -312,19 +327,22 @@
                 var titulo = document.getElementById('titulo');
                 titulo.classList.toggle('cambio-color');
             }
-            function alternarLista(id) {
-                var lista = document.getElementById(id);
-                lista.classList.toggle('oculto');
-            }
             function resaltarElemento(elemento) {
                 elemento.classList.toggle('resaltado');
             }
             function resaltarTabla(td){
                 td.classList.toggle('resaltado-tabla')
             }
+            //Ocultar fila con animación
             function ejemplos(id){
                 var fila = document.getElementById(id);
                 fila.classList.toggle("oculto2");
+                console.log("Se activó correctamente");
+            }
+            // Ocultar las listas con animación
+            function ocultarLista(id){
+                var fila = document.getElementById(id);
+                fila.classList.toggle("ocultolis");
                 console.log("Se activó correctamente");
             }
             
@@ -343,21 +361,6 @@
             });
         } else {
             contenedorLista.innerHTML = '<li>No hay entradas publicadas aún.</li>';
-        }
-
-        // Funciones de interacción rápida
-        function cambiarColorTitulo() {
-            var titulo = document.getElementById('titulo');
-            titulo.classList.toggle('cambio-color');
-        }
-
-        function alternarLista(id) {
-            var lista = document.getElementById(id);
-            lista.classList.toggle('oculto');
-        }
-
-        function resaltarElemento(elemento) {
-            elemento.classList.toggle('resaltado');
         }
     </script>
     

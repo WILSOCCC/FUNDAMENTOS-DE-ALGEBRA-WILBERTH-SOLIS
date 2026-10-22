@@ -31,8 +31,8 @@ contenidoEntrada = `
     tomamos como factor común.</p>
     <p>Los coeficientes se dividen entre el factor común:</p>
     <div class="factorc">
-        <p><strong>6x³ / 6x = x²</strong></p>
-        <p><strong>18x² / 6x = 3x</strong></p>
+        <p><strong>12x / 6 = 2x</strong></p>
+        <p><strong>6 / 6 = 1</strong></p>
     </div>
     <p>Los resultados se agrupan en un paréntesis, junto con sus literales correspondientes,
     y el factor común se coloca multiplicando el paréntesis: <strong>6(2x + 1)</strong>
@@ -116,9 +116,9 @@ contenidoEntrada = `
     primer y último término. Recordemos que un trinomio consta de 3 términos:
     <strong>a³ + b² + c</strong>, un trinomio cuadrado perfecto se estructura ya sea así:
     <strong>a² + 2ab + b²</strong>, o también: <strong>a² - 2ab + b²</strong>. Si nos
-    damos cuenta, este es el resultado que obtenemos de resolver un binomio al cuadrado,
+    damos cuenta, este es el resultado que obtenemos de resolver un <a href="entrada.html?id=01pn#bincua">binomio al cuadrado</a>,
     por lo que si identificamos correctamente el trinomio cuadrado perfecto, podemos
-    realizar la factorización más rápida volviendo al binomio al cuadrado original:
+    realizar la factorización más rápida volviendo al <a href="entrada.html?id=01pn#bincua">binomio al cuadrado</a> original:
     <strong>a² + 2ab + b² = (a + b)²</strong> o también: <strong>a² - 2ab + b²
     = (a - b)²</strong>.</p>
 
@@ -206,8 +206,8 @@ contenidoEntrada = `
     con dos términos separados por un signo de resta, si esto se cumple, fíjate si
     cada término tiene una raiz cuadrada exacta, si las tienen, identificaste una
     diferencia de cuadrados. Recordemos que en los productos notables, al tener dos
-    binomios conjugados que se multiplican, el resultado será una diferencia de
-    caudrados por lo que la regla aquí sería al revés: <strong>a² - b² = (a + b)(a
+    <a href="entrada.html?id=01pn#conjugado">binomios conjugados</a> que se multiplican, el resultado será una diferencia de
+    cuadrados por lo que la regla aquí sería al revés: <strong>a² - b² = (a + b)(a
     - b)</strong>.</p>
 
     <h4>Resolución de una diferencia de cuadrados:</h4>
@@ -318,7 +318,7 @@ contenidoEntrada = `
                 a² ± 2ab + b² = (a ± b)²
             </td>
             <td>
-                Binomio al cuadrado
+                <a href="entrada.html?id=01pn#bincua">Binomio al cuadrado</a>
             </td>
         </tr>
         <tr>
@@ -330,7 +330,7 @@ contenidoEntrada = `
 
             </td>
             <td>
-                Binomios conjugados
+                <a href="entrada.html?id=01pn#conjugado">Binomios conjugados</a>
             </td>
         </tr>
     </table>

@@ -1,0 +1,104 @@
+/* Animación de mostrarse al hacer scroll */
+.scroll{
+    view-timeline-name: --reveal;
+    animation-name: mostrar;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 27% cover 30%;
+}
+@keyframes mostrar {
+    from {
+        opacity: 0%;
+        scale: 10%;
+    }
+    to {
+        opacity: 100%;
+        scale: 100%;
+    }
+}
+
+
+/* Clases para ocultar las listas */
+.ocultolis li{
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0px;
+    height: 0%;
+    margin: 0px;
+    font-size: 0px;
+}
+.ocultolis{
+    border: 1px solid #a7a7a7;
+    margin: 0px;
+    padding: 0px;
+}
+/* Resaltado del texto dentro de las listas */
+.resaltado {
+    background-color: #d4efdf;
+    color: #196f3d;
+    transform: scale(1.3,1.3);
+    margin-left: 100px;
+    margin-right: 69px;
+}
+/* Cambio de color de las celdas de la tabla con click */
+.resaltado-tabla {
+    background-color: #d4efdf;
+    color: #196f3d;
+}
+/* Únicamente usado en el título */
+.cambio-color {
+    color: #c0392b;
+    transform: scale(1.2, 1.2);
+    margin-left: 80px;
+    border-bottom: none;
+}
+td:hover{
+    background-color: #dbf1ff;
+}
+
+/* Tabla con fila oculta para desplegar */
+.ejemplos{
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+.contenido{
+    max-height: 0px;
+    padding: 0;
+    transition: max-height 0.3s ease;
+}
+.ejemplos td{
+    border: none;
+    opacity: 0;
+    visibility: hidden;
+    height: 0px;
+    padding: 0px;
+}
+.contenido img{
+    max-height: 0px;
+    object-fit: fill;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.4s ease, max-height 0.3s ease;
+}
+/* Mostrar la fila oculta de la tabla */
+.ejemplos.oculto2 .contenido{
+    max-height: 280px;
+    object-fit: fill;
+}
+.ejemplos.oculto2 .contenido img{
+    max-height: 280px;
+    object-fit: fill;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    opacity: 1;
+}
+.ejemplos.oculto2 td{
+    border: 1px solid #ccc;
+    opacity: 1;
+    visibility: visible;
+    height: 260px;
+    padding: 0px;
+}

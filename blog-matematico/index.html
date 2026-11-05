@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Matemático Interactivo</title>
+    <link rel="stylesheet" href="estilos/entradas.css"/> 
+    <link rel="stylesheet" href="estilos/anims-keyframes.css"/>
+    <link rel="stylesheet" href="estilos/diagrama-factor.css"/>
     <style>
+        html{
+            scroll-behavior: smooth;
+        }
         body {
             font-family: Arial, sans-serif;
             max-width: 900px;
             margin: 20px auto;
             padding: 10px;
             color: #222;
-            background-image: url("https://img.freepik.com/premium-photo/gray-background-with-white-black-lines-that-say-b_1134661-11461.jpg");
+            background: #d6d6d6;
+            background: linear-gradient(90deg, rgba(214, 214, 214, 1) 0%, rgba(247, 247, 247, 1) 15%, rgba(255, 255, 255, 1) 50%, rgba(247, 247, 247, 1) 75%, rgba(214, 214, 214, 1) 100%);
         }
         .vacio{
             border-top: 2px solid #1a5276;
@@ -22,6 +29,10 @@
             transition: all .4s;
             color: #1a5276;
             cursor: pointer;
+            padding-bottom: 0px;
+        }
+        h2 {
+            color: #174d6eb4;
             padding-bottom: 0px;
         }
         p {
@@ -40,14 +51,16 @@
         }
         table {
             width: 100%;
-            border-collapse: collapse;
             margin: 15px 0;
+            border-collapse: separate;
+            border-spacing: 0;
         }
         th, td {
             transition: all .3s;
             border: 1px solid #ccc;
             padding: 8px;
             cursor: pointer;
+            border-radius: 11px;
         }
         td{
             background-color: #f6feff;
@@ -71,6 +84,7 @@
             visibility: visible;
             height: 100%;
             transition: all 0.7s ease;
+            border-radius: 11px;
         }
         li {
             margin: 5px 0;
@@ -81,130 +95,10 @@
             visibility: visible;
             transition: all 0.3s ease;
         }
-        /* Clases para ocultar las listas */
-        .ocultolis li{
-            border: none;
-            opacity: 0;
-            visibility: hidden;
-            padding: 0px;
-            height: 0%;
-            margin: 0px;
-            font-size: 0px;
-        }
-        .ocultolis{
-            border: 1px solid #a7a7a7;
-            margin: 0px;
-            padding: 0px;
-        }
-        /* Resaltado del texto dentro de las listas */
-        .resaltado {
-            background-color: #d4efdf;
-            color: #196f3d;
-            transform: scale(1.3,1.3);
-            margin-left: 100px;
-            margin-right: 69px;
-        }
-        /* Cambio de color de las celdas de la tabla con click */
-        .resaltado-tabla {
-            background-color: #d4efdf;
-            color: #196f3d;
-        }
-        /* Únicamente usado en el título */
-        .cambio-color {
-            color: #c0392b;
-            transform: scale(1.2, 1.2);
-            margin-left: 60px;
-            border-bottom: none;
-        }
-        td:hover{
-            background-color: #dbf1ff;
-        }
-        .exp:hover{
-            white-space: nowrap;
-            transform: scale3d(1.2, 1.2, 6.0);
-        }
-        .exp{
-            perspective: 10px;
-            transition: transform 0.5s ease;
-        }
-        /* Tabla con fila oculta para desplegar */
-        .ejemplos{
-            transition: opacity 0.4s ease, visibility 0.4s;
-        }
-        .contenido{
-            max-height: 0px;
-            padding: 0;
-            transition: max-height 0.3s ease;
-        }
-        .ejemplos td{
-            border: none;
-            opacity: 0;
-            visibility: hidden;
-            height: 0px;
-            padding: 0px;
-        }
-        /* Mostrar la fila oculta de la tabla */
-        .ejemplos.oculto2 .contenido{
-            max-height: 70px;
-        }
-        .ejemplos.oculto2 td{
-            border: 1px solid #ccc;
-            opacity: 1;
-            visibility: visible;
-            height: 70px;
-            padding: 8px;
-        }
-
-        /* NO TOCAR */
-        /* Lista de entradas cargadas dinámicamente */
-        #lista-entradas {
-            list-style-type: none;
-            padding: 0;
-        }
-        #lista-entradas li {
-            background-color: #fafafa;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 12px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        #lista-entradas li:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            background-color: #f1f1f1;
-        }
-        #lista-entradas a {
-            color: #1a527f;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        #lista-entradas a:hover {
-            color: #2980b9;
-            text-decoration: underline;
-        }
-        .fecha-post {
-            display: inline-block;
-            font-size: 12px;
-            color: #7f8c8d;
-            margin-left: 8px;
-        }
-        .resumen-post {
-            margin: 8px 0 0 0;
-            background-color: transparent;
-            padding: 0;
-            font-size: 14px;
-            color: #555;
-        }
-        .liss{
-            border: none;
-        }
-        /* NO TOCAR */
     </style>
 </head>
 <body>
-    <h1 id="titulo" onclick="cambiarColorTitulo()">Blog Matemático Interactivo</h1>
+    <h1 id="titulo" onclick="cambiarColorTitulo(this)">Blog Matemático Interactivo</h1>
     <p class="vacio"></p>
     <h2 class="subtitulo">Entradas del Blog</h2>
     
@@ -221,129 +115,614 @@
         <li onclick="resaltarElemento(this)">Estadística: Análisis y tratamiento de datos.</li>
     </ul>
 
-    <p>Tabla de Fórmulas (Haz clic en cualquier celda para cambiar su color)</p>
-    
-    <table>
-        <tr>
-            <th>Tema</th>
-            <th>Fórmula</th>
-        </tr>
-        <tr>
-            <td onclick="resaltarTabla(this)">Área del triángulo</td>
-            <td onclick="resaltarTabla(this)">Base por altura dividido entre 2</td>
-        </tr>
-        <tr>
-            <td onclick="resaltarTabla(this)">Teorema de Pitágoras</td>
-            <td onclick="resaltarTabla(this)">a elevado al cuadrado más b elevado al cuadrado igual a c elevado al cuadrado</td>
-        </tr>
-        <tr>
-            <td onclick="resaltarTabla(this)">Perímetro del círculo</td>
-            <td onclick="resaltarTabla(this)">2 por Pi por radio</td>
-        </tr>
-        <tr>
-            <td onclick="resaltarTabla(this)">Suma de cubos</td>
-            <td onclick="resaltarTabla(this)">a³+ b³ = (a + b)(a² - ab + b²)</td>
-        </tr>
-    </table>
+    <div class="scroll">
+        <p>Tabla de Fórmulas (Haz clic en cualquier celda para cambiar su color)</p>
+        
+        <table>
+            <tr>
+                <th>Tema</th>
+                <th>Fórmula</th>
+            </tr>
 
-    <p onclick="ocultarLista('pasos')">
-        Pasos para resolver un problema (Haz clic aquí para mostrar u ocultar los pasos)
-    </p>
-    <ol id="pasos">
-        <li onclick="resaltarElemento(this)">Comprender el problema planteado.</li>
-        <li onclick="resaltarElemento(this)">Trazar un plan o seleccionar la fórmula.</li>
-        <li onclick="resaltarElemento(this)">Ejecutar las operaciones requeridas.</li>
-        <li onclick="resaltarElemento(this)">Revisar y verificar la solución.</li>
-    </ol>
+            <tr>
+                <td onclick="resaltarTabla(this, areat2), ejemplos('areat')" id="areat1">Área del triángulo</td>
+                <td onclick="resaltarTabla(this, areat1), ejemplos('areat')" id="areat2">Base por altura dividido entre 2</td>
+            </tr>
+            <tr id="areat" class="ejemplos">
+                <td colspan="2"><a href="https://youtu.be/lmWDi51Siq0?si=MBUFMHA3t2raG4vy" target="_blank"><div class="contenido"><img src="multimedia/areatriangulo.jpg"></div></a></td>
+            </tr>
 
-    <p onclick="ocultarLista('casos')">
-        Casos de factorización (Haz clic aquí para mostrar u ocultar los casos)
-    </p>
-    <ul id="casos">
-        <li onclick="resaltarElemento(this)">Factor común: 12x² + 18x = x(12x + 18)</li>
-        <li onclick="resaltarElemento(this)">Trinomio cuadrado perfecto: a² + 2ab + b² = (a + b)(a + b) = (a + b)² <br>a² - 2ab + b² = (a-b)(a+b) = (a-b)²</li>
-        <li onclick="resaltarElemento(this)">Diferencia de cuadrados perfectos: x² - 16 = √x² = x, √16 = 4. x² - 16 = (x - 4)(x + 4)</li>
-    </ul>
+            <tr>
+                <td onclick="resaltarTabla(this, teorema2), ejemplos('teorema')" id="teorema1">Teorema de Pitágoras</td>
+                <td onclick="resaltarTabla(this, teorema1), ejemplos('teorema')" id="teorema2">a elevado al cuadrado más b elevado al cuadrado igual a c elevado al cuadrado</td>
+            </tr>
+            <tr id="teorema" class="ejemplos">
+                <td colspan="2"><a href="https://youtu.be/eTEBvBIz8Ok?si=NyGD35SOVzqMkYPK" target="_blank"><div class="contenido"><img src="multimedia/teorema.jpg"></div></a></td>
+            </tr>
 
-    <p>
-        Productos notables (Haz clic aquí para mostrar u ocultar los productos)
-    </p>
-    <table>
-        <tr>
-            <th>Producto notable</th>
-            <th class="re">Regla</th>
-            <th>Expresión algebraica</th>
-        </tr>
-        <tr>
-            <td onclick="ejemplos('bincuadra')">Binomio al cuadrado</td>
-            <td>Se tienen dos términos algebraicos en un binomio, la regla dice que para resolverlo se eleva al cuadrado el primer término, luego su suma o se resta el doble de el primer término por el
-                segundo término, dependiendo del signo que separa los dos términos algebraicos será el signo del término de en medio del resultado, finalmente se suma el segundo término también elevado al cuadrado
-            </td>
-            <td class="exp">(a ± b)² = a² ± 2ab + b²</td>
-        </tr>
-        <tr id="bincuadra" class="ejemplos">
-            <td colspan="3"><div class="contenido">sss</div></td>
-        </tr>
+            <tr>
+                <td onclick="resaltarTabla(this, perimetro2), ejemplos('perimetro')" id="perimetro1">Perímetro del círculo</td>
+                <td onclick="resaltarTabla(this, perimetro1), ejemplos('perimetro')" id="perimetro2">2 por Pi por radio</td>
+            </tr>
+            <tr id="perimetro" class="ejemplos">
+                <td colspan="2"><a href="https://youtu.be/GUAA75tXiko?si=VaKYeHYo_Fasb6Y7" target="_blank"><div class="contenido"><img src="multimedia/circulo.jpg"></div></a></td>
+            </tr>
 
-        <tr>
-            <td onclick="ejemplos('bincubo')">Binomio al cubo</td>
-            <td>
+            <tr>
+                <td onclick="resaltarTabla(this, suma2), ejemplos('suma')" id="suma1">Fórmula general</td>
+                <td onclick="resaltarTabla(this, suma1), ejemplos('suma')" id="suma2">x = -b ±√(b² - 4ac) / 2a</td>
+            </tr>
+            <tr id="suma" class="ejemplos">
+                <td colspan="2"><a href="https://youtu.be/ZC67c5ar9mA?si=pitOJ_uS0TpcuXg9" target="_blank"><div class="contenido"><img src="multimedia/formula.jpg"></div></a></td>
+            </tr>
 
-            </td>
-            <td class="exp">(a ± b)³ = a³ ± 3a²b + 3ab² ± b³</td>
-        </tr>
-        <tr id="bincubo" class="ejemplos">
-            <td colspan="3"><div class="contenido">sss</div></td>
-        </tr>
+            <tr>
+                <td onclick="resaltarTabla(this, dis2), ejemplos('dis')" id="dis1">Discriminante</td>
+                <td onclick="resaltarTabla(this, dis1), ejemplos('dis')" id="dis2">b² - 4ac</td>
+            </tr>
+            <tr id="dis" class="ejemplos">
+                <td colspan="2"><a href="https://youtu.be/_VXB-K4rsdA?si=ztbotRdW3k2Qy6fu" target="_blank"><div class="contenido"><img src="multimedia/dis.jpg"></div></a></td>
+            </tr>
+        </table>
+    </div>
 
-        <tr>
-            <td onclick="ejemplos('comun')">Término común</td>
-            <td>
+    <div class="scroll">
+        <p onclick="ocultarLista('pasos')">
+            Pasos para resolver un problema (Haz clic aquí para mostrar u ocultar los pasos)
+        </p>
+        <ol id="pasos">
+            <li onclick="resaltarElemento(this)">Comprender el problema planteado.</li>
+            <li onclick="resaltarElemento(this)">Trazar un plan o seleccionar la fórmula.</li>
+            <li onclick="resaltarElemento(this)">Ejecutar las operaciones requeridas.</li>
+            <li onclick="resaltarElemento(this)">Revisar y verificar la solución.</li>
+        </ol>
+    </div>
+
+    <div id="subtit" >
+        <div class="scroll">
+            <h1 onclick="cambiarColorTitulo(this)">Método de los Números Auxiliares</h1>
+            <h2>Aplicado para trinomios</h2>
+        </div>
+        <div class="scroll">
+            <p onclick="ocultarLista('trin1')">Para trinomios de la forma x² + bx + c (Haz clic aquí para mostrar u ocultar los pasos)</p>
+            <ol id="trin1">
+                <li onclick="resaltarElemento(this)">En trinomios de esta forma, buscamos dos números que multiplicados den el coeficiente c
+                    y sumados den el coeficiente b.</li>
+                <li onclick="resaltarElemento(this)">Dependiendo del signo del coeficiente c, sabremos si los números tendrán signos iguales
+                    o diferentes. Si c es positivo, ambos números tendrán el mismo signo que b. Si c es negativo, los números tendrán signos opuestos.</li>
+                <li onclick="resaltarElemento(this)">Después nos fijamos en el signo del coeficiente b, si ambos necesitan signos iguales, el signo de los números será el mismo que el de b.</li>
+                <li onclick="resaltarElemento(this)">En caso de que ambos necesiten números de signo contrario, seleccionamos el número con mayor valor absoluto y le asignamos el signo de b.</li>
+                <li onclick="resaltarElemento(this)">Una vez que tenemos los dos números, los escribimos en la forma (x + m)(x + n), donde m y n son los números encontrados y x, es la raíz cuadrada de x².</li>
+            </ol>
+        </div>
+
+        <div class="scroll">
+            <p onclick="ocultarLista('trin2')">Para trinomios de la forma ax² + bx + c (Haz clic aquí para mostrar u ocultar los pasos)</p>
+            <ol id="trin2">
+                <li onclick="resaltarElemento(this)">En trinomios de esta forma, primero multiplicamos el coeficiente a por el coeficiente c.</li>
+                <li onclick="resaltarElemento(this)">Luego, buscamos dos números que multiplicados den el resultado de la multiplicación y sumados den el coeficiente b.</li>
+                <li onclick="resaltarElemento(this)">Dependiendo del signo del coeficiente c, sabremos si los números tendrán signos iguales
+                    o diferentes. Si c es positivo, ambos números tendrán el mismo signo que b. Si c es negativo, los números tendrán signos opuestos.</li>
+                <li onclick="resaltarElemento(this)">Después nos fijamos en el signo del coeficiente b, si ambos necesitan signos iguales, el signo de los números será el mismo que el de b.</li>
+                <li onclick="resaltarElemento(this)">En caso de que ambos necesiten números de signo contrario, seleccionamos el número con mayor valor absoluto y le asignamos el signo de b.</li>
+                <li onclick="resaltarElemento(this)">Una vez que tenemos los dos números, vemos en qué binomios se distribuyen, uno de los números debe ser divisible por el coeficiente a y el otro por el coeficiente c.</li>
+                <li onclick="resaltarElemento(this)">Escribimos los dos binomios sumados con la distribución de los factores y sacamos el factor común de cada binomio.</li>
+                <li onclick="resaltarElemento(this)">Al sacar los factores comunes, dentro de los binomios nos debe quedar un factor común que podamos extraer, es decir, una expresión que sea igual en ambos binomios.</li>
+                <li onclick="resaltarElemento(this)">Escribimos un binomio con los factores comunes que sacamos y otro con los términos que quedaron dentro de los binomios.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="subtit2">
+        <div class="scroll">
+            <h1 onclick="cambiarColorTitulo(this)" style="margin-top: 60px;">Discriminante</h1>
+            <h2>Aplicado para trinomios</h2>
+        </div>
+        <div class="scroll">
+            <ul id="discriminante">
+                <h3>Una forma de saber si un trinomio puede seguirse factorizando es calcular su discriminante.</h3>
+                <h4>El discriminante se calcula como D = b² - 4ac.</h4>
+                <li onclick="resaltarElemento(this)">Después de calcular el discriminante, nos fijaremos en su valor para determinar si la expresión se puede seguir factorizando con enteros.</li>
+                <div class="scroll">
+                    <table>
+                        <tr>
+                            <th>Valor de D</th>
+                            <th>Resultado</th>
+                        </tr>
+                        <tr>
+                            <td>D > 0</td>
+                            <td>La expresión se puede factorizar con enteros.</td>
+                        </tr>
+                        <tr>
+                            <td>D = 0</td>
+                            <td>La expresión es un trinomio cuadrado perfecto.</td>
+                        </tr>
+                        <tr>
+                            <td>D < 0</td>
+                            <td>La expresión no se puede factorizar con enteros.</td>
+                        </tr>
+                    </table>
+                </div> 
+            </ul>
+        </div>
+    </div>
+
+    <div id="subtit3">
+        <div class="scroll">
+            <h1 onclick="cambiarColorTitulo(this)" style="margin-top: 60px;">Máximo Común Divisor (MCD)</h1>
+            <h2>Para sacar factores comúnes</h2>
+        </div>
+            <div class="scroll">
+            <ul id="mcd">
+                <div class="scroll">
+                    <h3>El máximo común divisor (MCD) de dos o más números es el mayor número que los divide exactamente y sin dejar residuo.</h3>
+                    <h4>MCD de dos números:</h4>
+                    <table>
+                        <tr>
+                            <th>Número 1</th>
+                            <th>Número 2</th>
+                            <th>MCD</th>
+                        </tr>
+                        <tr>
+                            <td onclick="ejemplos('ej1')">12</td>
+                            <td onclick="ejemplos('ej1')">18</td>
+                            <td onclick="ejemplos('ej1')">6</td>
+                        </tr>
+                        <tr id="ej1" class="ejemplos">
+                            <td colspan="3"><div class="contenido"><img src="multimedia/mcd1.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td onclick="ejemplos('ej2')">20</td>
+                            <td>25</td>
+                            <td>5</td>
+                        </tr>
+                        <tr id="ej2" class="ejemplos">
+                            <td colspan="3"><div class="contenido"><img src="multimedia/mcd2.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td onclick="ejemplos('ej3')">64</td>
+                            <td>16</td>
+                            <td>16</td>
+                        </tr>
+                        <tr id="ej3" class="ejemplos">
+                            <td colspan="3"><div class="contenido"><img src="multimedia/mcd3.png"></div></td>
+                        </tr>
+                    </table>
+                </div> 
+
+                <div class="scroll">
+                    <h4>MCD de tres números:</h4>
+                    <table>
+                        <tr>
+                            <th>Número 1</th>
+                            <th>Número 2</th>
+                            <th>Número 3</th>
+                            <th>MCD</th>
+                        </tr>
+                        <tr>
+                            <td onclick="ejemplos('ej4')">12</td>
+                            <td onclick="ejemplos('ej4')">18</td>
+                            <td onclick="ejemplos('ej4')">24</td>
+                            <td onclick="ejemplos('ej4')">6</td>
+                        </tr>
+                        <tr id="ej4" class="ejemplos">
+                            <td colspan="4"><div class="contenido"><img src="multimedia/mcd4.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td onclick="ejemplos('ej5')">20</td>
+                            <td onclick="ejemplos('ej5')">25</td>
+                            <td onclick="ejemplos('ej5')">30</td>
+                            <td onclick="ejemplos('ej5')">5</td>
+                        </tr>
+                        <tr id="ej5" class="ejemplos">
+                            <td colspan="4"><div class="contenido"><img src="multimedia/mcd5.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td onclick="ejemplos('ej6')">80</td>
+                            <td onclick="ejemplos('ej6')">64</td>
+                            <td onclick="ejemplos('ej6')">32</td>
+                            <td onclick="ejemplos('ej6')">16</td>
+                        </tr>
+                        <tr id="ej6" class="ejemplos">
+                            <td colspan="4"><div class="contenido"><img src="multimedia/mcd6.png"></div></td>
+                        </tr>
+                    </table>
+                </div> 
+            </ul>
+        </div>
+    </div>
+
+    <h1 class="estrategia" id="estra">Estrategia de factorización</h1>
+    <main class="diagrama">
+
+        <!-- PASO 1: ÚNICO PASO VISIBLE AL INICIO -->
+        <details>
+            <summary class="preguntaPrincipal">
+                1. ¿Tiene factor común?
+            </summary>
+
+            <div class="flecha">↓</div>
+
+            <!-- RESPUESTA SÍ -->
+            <details>
+                <summary class="opcionPrincipal">Sí</summary>
                 
-            </td>
-            <td class="exp">(x + a)(x + b) = x² + (a + b)x + ab</td>
-        </tr>
-        <tr id="comun" class="ejemplos">
-            <td colspan="3"><div class="contenido">sss</div></td>
-        </tr>
+                
 
-        <tr>
-            <td onclick="ejemplos('conjugados')">conjugados</td>
-            <td>
+                <div class="resultado">
+                    <h2>Extraer el factor común</h2>
 
-            </td>
-            <td class="exp">(a + b)(a - b) = a² - b²</td>
-        </tr>
-        <tr id="conjugados" class="ejemplos">
-            <td colspan="3"><div class="contenido">sss</div></td>
-        </tr>
-    </table>
+                    <p>
+                        Busca un número, una variable o ambos que estén
+                        presentes en todos los términos.
+                    </p>
+
+                    <p class="formula">
+                        6x² + 9x = 3x(2x + 3)
+                    </p>
+                </div>
+
+                <!-- PASO 3 DENTRO DE ESTA RAMA -->
+                <details>
+                    <summary class="pregunta">
+                        3. ¿Los factores obtenidos se pueden seguir factorizando?
+                    </summary>
+
+                    <div class="flecha">↓</div>
+
+                    <details>
+                        <summary class="opcion">Sí</summary>
+
+                        <div class="resultado">
+                            <p>
+                                Vuelve a revisar cada factor desde el paso 1.
+                            </p>
+
+                            <p>
+                                Comprueba si tiene factor común, diferencia de
+                                cuadrados, cubos o algún trinomio factorizable.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="opcion">No</summary>
+
+                        <div class="completa">
+                            <h2>Factorización completa</h2>
+                        </div>
+                    </details>
+                </details>
+            </details>
+
+            <!-- RESPUESTA NO -->
+            <details>
+                <summary class="opcionPrincipal">No</summary>
+
+                <div class="flecha">↓</div>
+
+                <!-- PASO 2 -->
+                <details>
+                    <summary class="pregunta">
+                        2. ¿Cuántos términos tiene la expresión?
+                    </summary>
+
+                    <div class="flecha">↓</div>
+
+                    <!-- DOS TÉRMINOS -->
+                    <details>
+                        <summary class="opcion">Dos términos</summary>
+
+                        <div class="flecha">↓</div>
+
+                        <details>
+                            <summary class="pregunta">
+                                ¿Es una diferencia de cuadrados?
+                            </summary>
+
+                            <details>
+                                <summary class="opcion">Sí</summary>
+
+                                <div class="resultado">
+                                    <h2>Diferencia de cuadrados</h2>
+
+                                    <p class="formula">
+                                        a² - b² = (a + b)(a - b)
+                                    </p>
+
+                                    <p>Ejemplo:</p>
+
+                                    <p class="formula">
+                                        x² - 16 = (x + 4)(x - 4)
+                                    </p>
+                                </div>
+
+                                <!-- PASO 3 -->
+                                <details>
+                                    <summary class="pregunta">
+                                        3. ¿Los factores obtenidos se pueden seguir factorizando?
+                                    </summary>
+
+                                    <div class="flecha">↓</div>
+
+                                    <details>
+                                        <summary class="opcion">Sí</summary>
+
+                                        <div class="resultado">
+                                            <p>
+                                                Revisa nuevamente cada factor
+                                                comenzando desde el paso 1.
+                                            </p>
+                                        </div>
+                                    </details>
+
+                                    <details>
+                                        <summary class="opcion">No</summary>
+
+                                        <div class="completa">
+                                            <h2>Factorización completa</h2>
+                                        </div>
+                                    </details>
+                                </details>
+                            </details>
+
+                            <details>
+                                <summary class="opcion">No</summary>
+
+                                <div class="flecha">↓</div>
+
+                                <details>
+                                    <summary class="pregunta">
+                                        ¿Es suma o diferencia de cubos?
+                                    </summary>
+
+                                    <details>
+                                        <summary class="opcion">Sí</summary>
+
+                                        <div class="resultado">
+                                            <h2>Suma o diferencia de cubos</h2>
+
+                                            <p class="formula">
+                                                a³ + b³ =
+                                                (a + b)(a² - ab + b²)
+                                            </p>
+
+                                            <p class="formula">
+                                                a³ - b³ =
+                                                (a - b)(a² + ab + b²)
+                                            </p>
+                                        </div>
+
+                                        <!-- PASO 3 -->
+                                        <details>
+                                            <summary class="pregunta">
+                                                3. ¿Los factores obtenidos se pueden seguir factorizando?
+                                            </summary>
+
+                                            <div class="flecha">↓</div>
+
+                                            <details>
+                                                <summary class="opcion">Sí</summary>
+
+                                                <div class="resultado">
+                                                    <p>
+                                                        Revisa nuevamente cada
+                                                        factor desde el paso 1.
+                                                    </p>
+                                                </div>
+                                            </details>
+
+                                            <details>
+                                                <summary class="opcion">No</summary>
+
+                                                <div class="completa">
+                                                    <h2>Factorización completa</h2>
+                                                </div>
+                                            </details>
+                                        </details>
+                                    </details>
+
+                                    <details>
+                                        <summary class="opcion">No</summary>
+
+                                        <div class="resultado">
+                                            <p>
+                                                La expresión no corresponde
+                                                a los casos considerados.
+                                            </p>
+
+                                            <p>
+                                                Busca otro método o simplifica
+                                                la expresión.
+                                            </p>
+                                        </div>
+                                    </details>
+                                </details>
+                            </details>
+                        </details>
+                    </details>
+
+                    <!-- TRES TÉRMINOS -->
+                    <details>
+                        <summary class="opcion">Tres términos</summary>
+
+                        <div class="flecha">↓</div>
+
+                        <details>
+                            <summary class="pregunta">
+                                ¿Es un trinomio cuadrado perfecto?
+                            </summary>
+
+                            <details>
+                                <summary class="opcion">Sí</summary>
+
+                                <div class="resultado">
+                                    <h2>Trinomio cuadrado perfecto</h2>
+
+                                    <p class="formula">
+                                        a² + 2ab + b² = (a + b)²
+                                    </p>
+
+                                    <p class="formula">
+                                        a² - 2ab + b² = (a - b)²
+                                    </p>
+
+                                    <p>Ejemplo:</p>
+
+                                    <p class="formula">
+                                        x² + 6x + 9 = (x + 3)²
+                                    </p>
+                                </div>
+
+                                <!-- PASO 3 -->
+                                <details>
+                                    <summary class="pregunta">
+                                        3. ¿Los factores obtenidos se pueden seguir factorizando?
+                                    </summary>
+
+                                    <div class="flecha">↓</div>
+
+                                    <details>
+                                        <summary class="opcion">Sí</summary>
+
+                                        <div class="resultado">
+                                            <p>
+                                                Revisa nuevamente cada factor
+                                                comenzando desde el paso 1.
+                                            </p>
+                                        </div>
+                                    </details>
+
+                                    <details>
+                                        <summary class="opcion">No</summary>
+
+                                        <div class="completa">
+                                            <h2>Factorización completa</h2>
+                                        </div>
+                                    </details>
+                                </details>
+                            </details>
+
+                            <details>
+                                <summary class="opcion">No</summary>
+
+                                <div class="flecha">↓</div>
+
+                                <details>
+                                    <summary class="pregunta">
+                                        ¿Se puede factorizar como ax² + bx + c?
+                                    </summary>
+
+                                    <details>
+                                        <summary class="opcion">Sí</summary>
+
+                                        <div class="resultado">
+                                            <h2>Trinomio de segundo grado</h2>
+
+                                            <p class="formula">
+                                                ax² + bx + c
+                                            </p>
+
+                                            <p>
+                                                Busca dos números que permitan
+                                                descomponer el término central.
+                                            </p>
+
+                                            <p>Ejemplo:</p>
+
+                                            <p class="formula">
+                                                x² + 5x + 6 =
+                                                (x + 2)(x + 3)
+                                            </p>
+                                        </div>
+
+                                        <!-- PASO 3 -->
+                                        <details>
+                                            <summary class="pregunta">
+                                                3. ¿Los factores obtenidos se pueden seguir factorizando?
+                                            </summary>
+
+                                            <div class="flecha">↓</div>
+
+                                            <details>
+                                                <summary class="opcion">Sí</summary>
+
+                                                <div class="resultado">
+                                                    <p>
+                                                        Revisa nuevamente cada
+                                                        factor desde el paso 1.
+                                                    </p>
+                                                </div>
+                                            </details>
+
+                                            <details>
+                                                <summary class="opcion">No</summary>
+
+                                                <div class="completa">
+                                                    <h2>Factorización completa</h2>
+                                                </div>
+                                            </details>
+                                        </details>
+                                    </details>
+
+                                    <details>
+                                        <summary class="opcion">No</summary>
+
+                                        <div class="resultado">
+                                            <h2>No se factoriza con enteros</h2>
+
+                                            <p>
+                                                Revisa el discriminante:
+                                            </p>
+
+                                            <p class="formula">
+                                                Δ = b² - 4ac
+                                            </p>
+                                        </div>
+                                    </details>
+                                </details>
+                            </details>
+                        </details>
+                    </details>
+
+                </details>
+            </details>
+
+        </details>
+
+    </main>
 
     <!-- Archivo de configuración que contiene el arreglo de entradas -->
     <script src="posts.js"></script>
 
     <script>
-            function cambiarColorTitulo() {
-                var titulo = document.getElementById('titulo');
-                titulo.classList.toggle('cambio-color');
+            function cambiarColorTitulo(titu) {
+                titu.classList.toggle('cambio-color');
             }
             function resaltarElemento(elemento) {
                 elemento.classList.toggle('resaltado');
             }
-            function resaltarTabla(td){
+            function resaltarTabla(td, td2) {
                 td.classList.toggle('resaltado-tabla')
+                if (td2) {
+                    td2.classList.toggle('resaltado-tabla');
+                }
             }
             //Ocultar fila con animación
             function ejemplos(id){
                 var fila = document.getElementById(id);
                 fila.classList.toggle("oculto2");
-                console.log("Se activó correctamente");
+                //console.log("Se activó correctamente");
             }
             // Ocultar las listas con animación
             function ocultarLista(id){
                 var fila = document.getElementById(id);
                 fila.classList.toggle("ocultolis");
-                console.log("Se activó correctamente");
+                //console.log("Se activó correctamente");
             }
             
             // Cargar dinámicamente las entradas definidas en posts.js

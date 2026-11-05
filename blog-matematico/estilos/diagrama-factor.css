@@ -1,0 +1,115 @@
+.estrategia {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    margin-top: 100px;;
+
+    color: white;
+    background-color: #245b8f;
+    border-radius: 10px;
+    font-size: 54px;
+}
+.diagrama {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+details {
+    margin: 15px auto;
+    transition: all 0.8s ease;
+}
+
+summary {
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.8s ease;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.pregunta {
+    display: block;
+    padding: 15px;
+
+    color: #102d4c;
+    background-color: #dcecf7;
+    border: 2px solid #245b8f;
+    border-radius: 10px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.preguntaPrincipal {
+    display: block;
+    padding: 15px;
+
+    color: #102d4c;
+    background-color: #dcecf7;
+    border: 5px double #245b8f;
+    border-radius: 10px;
+
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.opcion {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 30px;
+
+    color: white;
+    background-color: #2b8bc4;
+    border-radius: 20px;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.opcionPrincipal {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 30px;
+
+    color: white;
+    background-color: #2b8bc4;
+    border-radius: 20px;
+
+    font-size: 50px;
+    font-weight: bold;
+}
+.resultado {
+    width: 70%;
+    margin: 15px auto;
+    padding: 15px;
+    opacity: 1;
+    visibility: visible;
+
+    background-color: white;
+    border: 2px solid #245b8f;
+    border-radius: 10px;
+    transition: all 0.8s ease;
+}
+.formula {
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.flecha {
+    margin: 5px;
+    color: #245b8f;
+    font-size: 25px;
+}
+.completa {
+    width: 60%;
+    margin: 15px auto;
+    padding: 15px;
+
+    color: white;
+    background-color: #245b8f;
+    border-radius: 10px;
+}

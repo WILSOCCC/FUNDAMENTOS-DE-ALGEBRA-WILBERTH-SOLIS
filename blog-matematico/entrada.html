@@ -5,12 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="titulo-pagina">Cargando... - Blog Matemático</title>
     <style>
+        .scroll{
+            view-timeline-name: --reveal;
+            animation-name: mostrar;
+            animation-fill-mode: both;
+            animation-timeline: --reveal;
+            animation-range: entry 27% cover 30%;
+        }
+        @keyframes mostrar {
+            from {
+                opacity: 0%;
+                scale: 10%;
+            }
+            to {
+                opacity: 100%;
+                scale: 100%;
+            }
+        }
+        html{
+            scroll-behavior: smooth;
+        }
         body {
             font-family: Arial, sans-serif;
-            max-width: 700px;
+            max-width: 900px;
             margin: 20px auto;
             padding: 10px;
             color: #222;
+            background: #d6d6d6;
+            background: linear-gradient(90deg, rgba(214, 214, 214, 1) 0%, rgba(247, 247, 247, 1) 30%, rgba(255, 255, 255, 1) 50%, rgba(247, 247, 247, 1) 70%, rgba(214, 214, 214, 1) 100%);
         }
         header {
             border-bottom: 2px solid #1a5276;
@@ -24,13 +46,15 @@
         }
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin: 15px 0;
         }
         th, td {
             transition: all .3s;
             border: 1px solid #ccc;
             padding: 8px;
+            border-radius: 11px;
         }
         td{
             background-color: #f6feff;
@@ -43,10 +67,11 @@
             text-align: center;
         }
         .imagenes img{
-            max-width: 730px;
-            max-height: 300px;
+            max-width: 890px;
+            max-height: 415px;
             object-fit: fill;
             margin-bottom: 40px;
+            border: 1px solid black;
         }
         .imagenesfac img{
             max-width: 730px;
@@ -88,6 +113,14 @@
             text-align: center;
             font-size: 25px;
             border-bottom: 3px solid #1a527f;
+        }
+        a{
+            text-decoration: none;
+            color:#0400ffcc
+        }
+        a:hover{
+            text-decoration: underline;
+            color:#00208a;
         }
     </style>
 </head>

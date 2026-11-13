@@ -11,28 +11,28 @@ $$
 -6 \\
 -2 \\
 -6 \\
--3 \\
+-3
 \end{bmatrix}
 +
 \begin{bmatrix}
 5 \\
 -4 \\
 -5 \\
-6 \\
+6
 \end{bmatrix}
 +
 \begin{bmatrix}
 6 \\
 2 \\
 6 \\
--3 \\
+-3
 \end{bmatrix}
 =
 \begin{bmatrix}
 5 \\
 -4 \\
 -5 \\
-0 \\
+0
 \end{bmatrix}
 $$
 

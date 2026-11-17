@@ -53,7 +53,8 @@
     margin-left: 80px;
     border-bottom: none;
 }
-td:hover{
+/* Al pasar el mouse sobre cualquier celda, toda la fila cambia de color */
+tr:hover td{
     background-color: #dbf1ff;
 }
 

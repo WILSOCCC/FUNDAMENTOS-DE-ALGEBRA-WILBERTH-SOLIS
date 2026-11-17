@@ -1,3 +1,12 @@
+.completa {
+    width: 60%;
+    margin: 5px auto;
+    padding: 10px;
+
+    color: white;
+    background-color: #245b8f;
+    border-radius: 10px;
+}
 .estrategia {
     width: 80%;
     margin: 20px auto;
@@ -103,13 +112,4 @@ summary::-webkit-details-marker {
     margin: 5px;
     color: #245b8f;
     font-size: 25px;
-}
-.completa {
-    width: 60%;
-    margin: 15px auto;
-    padding: 15px;
-
-    color: white;
-    background-color: #245b8f;
-    border-radius: 10px;
 }
